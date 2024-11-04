@@ -6,21 +6,8 @@
 
 package com.jimandreas
 
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import java.io.File
-
-@Serializable
-data class TrainingData(
-    val train: List<TrainExample>,
-    val test: List<TrainExample>
-)
-
-@Serializable
-data class TrainExample(
-    val input: List<List<Int>>,
-    val output: List<List<Int>>
-)
 
 fun main() {
 //    var filePath = "C:/a/ARC-AGI/data/training/00d62c1b.json"
@@ -34,5 +21,36 @@ fun main() {
 
     val myData = Json.decodeFromString<TrainingData>(file.readText())
 
+    prettyPrintProblem(myData)
+
     println("Done\n")
+}
+
+/**
+ * first iteration on pretty printing a problem matrix
+ */
+fun prettyPrintProblem(td: TrainingData) {
+    val iter = td.train.iterator().withIndex()
+
+    for (t in td.train) {
+        val nextTrainingArray = iter.next()
+        println(nextTrainingArray.index)
+
+        val te = nextTrainingArray.value
+        val rowInputIter = te.input.iterator()
+        val rowOutputIter = te.output.iterator()
+
+        while (rowInputIter.hasNext()) {
+            val s = StringBuilder()
+            val rIn = rowInputIter.next()
+            val rOut = rowOutputIter.next()
+            val str = StringBuilder()
+            s.append(rIn.joinToString(" "))
+            s.append(" | ")
+            s.append(rOut.joinToString(" "))
+            println(s)
+        }
+
+
+    }
 }
