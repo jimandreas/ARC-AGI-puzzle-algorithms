@@ -1,3 +1,9 @@
+@file:Suppress(
+    "UNUSED_VARIABLE", "MemberVisibilityCanBePrivate", "UNUSED_PARAMETER", "unused",
+    "ReplaceManualRangeWithIndicesCalls", "ReplaceSizeZeroCheckWithIsEmpty",
+    "SameParameterValue", "UnnecessaryVariable"
+)
+
 package com.jimandreas
 
 import kotlinx.serialization.Serializable
@@ -17,7 +23,8 @@ data class TrainExample(
 )
 
 fun main() {
-    var filePath = "C:/a/ARC-AGI/data/training/00d62c1b.json"
+//    var filePath = "C:/a/ARC-AGI/data/training/00d62c1b.json"
+    var filePath = "C:/a/ARC-AGI/data/evaluatio/00dbd492.json"
     val file = File(filePath)
     val exists =  file.exists()
     val isAFile = file.isFile
@@ -29,7 +36,3 @@ fun main() {
 
     println("Done\n")
 }
-
-
-
-
