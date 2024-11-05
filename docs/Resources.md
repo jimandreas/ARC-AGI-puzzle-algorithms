@@ -17,8 +17,9 @@ The current competition - soon ending (Nov 2024)
 ## Details
 
 [Test Visualizations](https://arc-visualizations.github.io/index.html)
-> [Training set visualizations](https://arc-visualizations.github.io/training.html)
-<br>
+
+[Training set visualizations](https://arc-visualizations.github.io/training.html)
+
 [Evaluation set visualizations](https://arc-visualizations.github.io/evaluation.html)
 
 
