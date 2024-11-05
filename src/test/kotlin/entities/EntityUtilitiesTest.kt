@@ -57,6 +57,9 @@ internal class EntityUtilitiesTest {
             println("ERROR on json decode on file: $name")
         }
 
+        if (myData.test.size != 1) {
+            println("$name")
+        }
         //pp.prettyPrintProblem(myData)
 
         for (d in myData.train) {

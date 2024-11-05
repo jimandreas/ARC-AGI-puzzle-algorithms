@@ -13,7 +13,8 @@ import java.io.File
 
 fun main() {
 //    var filePath = "C:/a/ARC-AGI/data/training/00d62c1b.json"
-    val filePath = "C:/a/ARC-AGI/data/evaluation/00dbd492.json"
+    val filePath = "C:/a/ARC-AGI/data/training/d5d6de2d.json"
+//    val filePath = "C:/a/ARC-AGI/data/evaluation/00dbd492.json"
     val file = File(filePath)
     val exists =  file.exists()
     val isAFile = file.isFile
