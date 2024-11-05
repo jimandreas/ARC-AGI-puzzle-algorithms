@@ -1,6 +1,23 @@
 # Random Notes
 
-Please note that there are MORE THAN ONE test input/output block in the following tasks:
+## multiple test outputs - Update: 
+
+Excepted from: https://arcprize.org/guide - Submission format
+
+Quote: Submissions should contain two dictionaries of predictions enclosed in a list, 
+as is shown by the example below. When a task has multiple test outputs that need to be predicted 
+(e.g., task 12997ef3 below), they must be in the same order as the corresponding test inputs.
+
+```
+{"00576224": [{"attempt_1": [[0, 0], [0, 0]], "attempt_2": [[0, 0], [0, 0]]}],
+"009d5c81": [{"attempt_1": [[0, 0], [0, 0]], "attempt_2": [[0, 0], [0, 0]]}],
+"12997ef3": [{"attempt_1": [[0, 0], [0, 0]], "attempt_2": [[0, 0], [0, 0]]},
+{"attempt_1": [[0, 0], [0, 0]], "attempt_2": [[0, 0], [0, 0]]}], ...
+}
+```
+
+Please note that there are MORE THAN ONE test input/output block in the following tasks.  Not all 
+viewers have implemented this detail.
 ```
 training/239be575
 training/25ff71a9
