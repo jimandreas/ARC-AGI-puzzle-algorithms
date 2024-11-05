@@ -5,7 +5,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class TrainingData(
     val train: List<TrainExample>,
-    val test: List<TrainExample>
+    val test: List<TrainExample>,
+    val name: String = ""
 )
 
 @Serializable

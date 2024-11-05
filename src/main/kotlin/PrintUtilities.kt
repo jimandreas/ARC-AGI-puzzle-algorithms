@@ -1,3 +1,8 @@
+@file:Suppress(
+    "UNUSED_VARIABLE", "MemberVisibilityCanBePrivate", "unused",
+    "ReplaceManualRangeWithIndicesCalls", "ReplaceSizeZeroCheckWithIsEmpty",
+    "SameParameterValue", "UnnecessaryVariable"
+)
 package com.jimandreas
 
 class PrintUtilities {
@@ -50,10 +55,13 @@ class PrintUtilities {
 
 
             for (col in 0 until numCols) {
-                if (pairIsIn(entity, Pair(row, col)))
-                    s.append(" X")
-                else {
-                    s.append(" ${matrix[row][col]}", )
+                val setNumber = pairIsIn(entity, Pair(row, col))
+                if (setNumber >= 0) {
+                    val letter = ('A' + setNumber)
+                    s.append(" $letter")
+                } else {
+//                    s.append(" ${matrix[row][col]}", )
+                    s.append("  ", )
                 }
             }
 
@@ -61,12 +69,14 @@ class PrintUtilities {
         }
     }
 
-    private fun pairIsIn(entity: List<Set<Pair<Int, Int>>>, p: Pair<Int, Int> ): Boolean {
-        for (e in entity) {
-            if (e.contains(p)) {
-                return true
+    private fun pairIsIn(entity: List<Set<Pair<Int, Int>>>, p: Pair<Int, Int> ): Int {
+        val eIter = entity.iterator().withIndex()
+        while (eIter.hasNext()) {
+            val e = eIter.next()
+            if (e.value.contains(p)) {
+                return e.index
             }
         }
-        return false
+        return -1
     }
 }

@@ -1,4 +1,9 @@
-package com.jimandreas
+@file:Suppress(
+    "UNUSED_VARIABLE", "MemberVisibilityCanBePrivate", "unused",
+    "ReplaceManualRangeWithIndicesCalls", "ReplaceSizeZeroCheckWithIsEmpty",
+    "SameParameterValue", "UnnecessaryVariable"
+)
+package com.jimandreas.entities
 
 class EntityUtilities {
 
