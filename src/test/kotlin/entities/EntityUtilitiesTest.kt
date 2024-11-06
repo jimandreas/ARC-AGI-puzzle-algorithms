@@ -7,7 +7,6 @@
 import com.jimandreas.*
 import com.jimandreas.entities.EntityUtilities
 import kotlinx.serialization.json.Json
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -63,7 +62,7 @@ internal class EntityUtilitiesTest {
         //pp.prettyPrintProblem(myData)
 
         for (d in myData.train) {
-            val entities = entUtil.findAllIsolatedEntities(d.input)
+            val entities = entUtil.findAllIsolatedThings(d.input)
 //            println("$name ${entities.size}")
         }
 

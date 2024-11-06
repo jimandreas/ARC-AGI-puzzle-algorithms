@@ -26,7 +26,7 @@ class EntityUtilities {
      * forms should be searched.  It should return a List of Sets of Pairs.
      *
      */
-    fun findAllIsolatedEntities(matrix: List<List<Int>>): List<Set<Pair<Int, Int>>> {
+    fun findAllIsolatedThings(matrix: List<List<Int>>): List<Set<Pair<Int, Int>>> {
         val allEntities = mutableListOf<Set<Pair<Int, Int>>>()
         val numRows = matrix.size
         val numCols = matrix[0].size
@@ -104,7 +104,7 @@ class EntityUtilities {
      * The entity should be surrounded by either (1) the edge of the matrix,
      * or (2) values of zero.  Thus this is an isolated form in the matrix.
      */
-    fun findIsolatedEntity(matrix: List<List<Int>>): Set<Pair<Int, Int>> {
+    fun findIsolatedThing(matrix: List<List<Int>>): Set<Pair<Int, Int>> {
         val entityCoordinates = mutableSetOf<Pair<Int, Int>>()
         val numRows = matrix.size
         val numCols = matrix[0].size

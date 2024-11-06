@@ -32,7 +32,7 @@ fun main() {
     val entUtil = EntityUtilities()
 
     val d = myData.train[2].input
-    val entities = entUtil.findAllIsolatedEntities(d)
+    val entities = entUtil.findAllIsolatedThings(d)
 
     println("\n")
     pp.prettyPrintOneMatrixWithEntityDesignation(d, entities)
