@@ -8,14 +8,14 @@ import kotlinx.serialization.Serializable
  *    That is to say - there is only one "test" with one input and one expected output.
  */
 @Serializable
-data class TrainingData(
-    val train: List<TrainExample>,
-    val test: List<TrainExample>,   // note that there sometimes MORE THAN ONE entry in this list!!
+data class TaskCoordinateData(
+    val train: List<MatrixDataAsListOfLists>,
+    val test: List<MatrixDataAsListOfLists>,   // note that there sometimes MORE THAN ONE entry in this list!!
     val name: String = ""
 )
 
 @Serializable
-data class TrainExample(
+data class MatrixDataAsListOfLists(
     val input: List<List<Int>>,
     val output: List<List<Int>>
 )

@@ -3,6 +3,7 @@
     "ReplaceManualRangeWithIndicesCalls", "ReplaceSizeZeroCheckWithIsEmpty",
     "SameParameterValue", "UnnecessaryVariable"
 )
+
 package com.jimandreas.entities
 
 class BlockUtilities {
@@ -92,6 +93,11 @@ Coordinates: [(2, 3), (2, 4), (3, 2), (3, 3), (3, 4)]
             exploreBlock(matrix, row - 1, col, targetValue, blockCoordinates, visited)
             exploreBlock(matrix, row, col + 1, targetValue, blockCoordinates, visited)
             exploreBlock(matrix, row, col - 1, targetValue, blockCoordinates, visited)
+
+            exploreBlock(matrix, row + 1, col + 1, targetValue, blockCoordinates, visited)
+            exploreBlock(matrix, row - 1, col - 1, targetValue, blockCoordinates, visited)
+            exploreBlock(matrix, row + 1, col + 1, targetValue, blockCoordinates, visited)
+            exploreBlock(matrix, row - 1, col - 1, targetValue, blockCoordinates, visited)
         }
     }
 

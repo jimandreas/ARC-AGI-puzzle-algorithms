@@ -4,6 +4,8 @@
     "SameParameterValue", "UnnecessaryVariable"
 )
 
+package entities
+
 import com.jimandreas.*
 import com.jimandreas.entities.EntityUtilities
 import kotlinx.serialization.json.Json
@@ -48,16 +50,16 @@ internal class EntityUtilitiesTest {
             throw Exception("file not found.")
         }
 
-        lateinit var myData : TrainingData
+        lateinit var myData : TaskCoordinateData
 
         try {
-            myData = Json.decodeFromString<TrainingData>(file.readText())
+            myData = Json.decodeFromString<TaskCoordinateData>(file.readText())
         } catch (e: Exception) {
             println("ERROR on json decode on file: $name")
         }
 
         if (myData.test.size != 1) {
-            println("$name")
+            println("name")
         }
         //pp.prettyPrintProblem(myData)
 

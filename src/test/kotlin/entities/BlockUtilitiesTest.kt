@@ -4,6 +4,8 @@
     "SameParameterValue", "UnnecessaryVariable"
 )
 
+package entities
+
 import com.jimandreas.*
 import com.jimandreas.entities.BlockCompletion
 import com.jimandreas.entities.BlockUtilities
@@ -64,10 +66,10 @@ internal class BlockUtilitiesTest {
             throw Exception("file not found.")
         }
 
-        lateinit var myData : TrainingData
+        lateinit var myData : TaskCoordinateData
 
         try {
-            myData = Json.decodeFromString<TrainingData>(file.readText())
+            myData = Json.decodeFromString<TaskCoordinateData>(file.readText())
         } catch (e: Exception) {
             println("ERROR on json decode on file: $path")
         }

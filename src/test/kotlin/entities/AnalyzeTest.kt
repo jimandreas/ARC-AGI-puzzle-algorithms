@@ -1,0 +1,76 @@
+@file:Suppress(
+    "UNUSED_VARIABLE", "MemberVisibilityCanBePrivate", "unused",
+    "ReplaceManualRangeWithIndicesCalls", "ReplaceSizeZeroCheckWithIsEmpty",
+    "SameParameterValue", "UnnecessaryVariable"
+)
+
+package entities
+
+import com.jimandreas.*
+import com.jimandreas.entities.Analyze
+import com.jimandreas.entities.BlockCompletion
+import com.jimandreas.entities.BlockUtilities
+import kotlinx.serialization.json.Json
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
+import java.io.File
+
+internal class AnalyzeTest {
+
+    val pp = PrintUtilities()
+    val blockUtil = BlockUtilities()
+    val blockCompletion = BlockCompletion()
+    val taskData = DataForOneTrainInstance()
+    val analyze = Analyze()
+
+    @BeforeEach
+    fun setUp() {
+        // do something
+    }
+
+    // NOTES: good but the tasks are more oriented to "hollowness" than "blockiness"
+
+    @Test
+    @DisplayName("examine blocks in on task")
+    fun testBlockRecognizerOnOneTask() {
+
+        //val t = "3aa6fb7a" // https://arc-visualizations.github.io/3aa6fb7a.html
+
+        // 60b61512 NOTE that this one exposed that the diagonal cell was not found!
+
+        val t = "60b61512" // https://arc-visualizations.github.io/60b61512.html
+
+        val filePath = "$pathPrefix$trainingPrefix$t.json"
+        openIt(t, filePath)
+
+
+    }
+
+    private fun openIt(name: String, path: String) {
+
+        val d = DataForOneTrainInstance()
+
+        val file = File(path)
+        val exists = file.exists()
+        val isAFile = file.isFile
+        val canRead = file.canRead()
+
+        if (!(exists && isAFile && canRead)) {
+            throw Exception("file not found.")
+        }
+
+        lateinit var myData : TaskCoordinateData
+
+        try {
+            myData = Json.decodeFromString<TaskCoordinateData>(file.readText())
+        } catch (e: Exception) {
+            println("ERROR on json decode on file: $path")
+        }
+
+        d.input = myData.train[0].input
+
+        analyze.analyzeTrainInstance(d)
+
+    }
+}

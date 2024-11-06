@@ -22,7 +22,7 @@ fun main() {
 
     val foo = exists && isAFile && canRead
 
-    val myData = Json.decodeFromString<TrainingData>(file.readText())
+    val myData = Json.decodeFromString<TaskCoordinateData>(file.readText())
 
     val pp = PrintUtilities()
 

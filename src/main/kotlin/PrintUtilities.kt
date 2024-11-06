@@ -10,7 +10,7 @@ class PrintUtilities {
     /**
      * pretty print all problem matrices
      */
-    fun prettyPrintProblem(td: TrainingData) {
+    fun prettyPrintProblem(td: TaskCoordinateData) {
         val iter = td.train.iterator().withIndex()
 
         for (t in td.train) {
@@ -61,7 +61,7 @@ class PrintUtilities {
                     s.append(" $letter")
                 } else {
 //                    s.append(" ${matrix[row][col]}", )
-                    s.append("  ", )
+                    s.append("  ",)
                 }
             }
 
@@ -69,7 +69,7 @@ class PrintUtilities {
         }
     }
 
-    private fun pairIsIn(entity: List<Set<Pair<Int, Int>>>, p: Pair<Int, Int> ): Int {
+    private fun pairIsIn(entity: List<Set<Pair<Int, Int>>>, p: Pair<Int, Int>): Int {
         val eIter = entity.iterator().withIndex()
         while (eIter.hasNext()) {
             val e = eIter.next()
@@ -79,4 +79,31 @@ class PrintUtilities {
         }
         return -1
     }
+
+
+    /**
+     * print block info with "B" for block entries coords, and an "M" for missing entries in the block
+     */
+    fun prettyPrintBlockInfo(b: BlockInfo) {
+        val maxRow = b.coords.maxOf { it.first }
+        val maxCol = b.coords.maxOf { it.second }
+
+        for (r in 0..maxRow) {
+            val str = StringBuilder()
+            for (c in 0..maxCol) {
+                if (b.coords.contains(Pair(r, c))) {
+                    str.append(" B")
+                } else {
+                    if (b.missingCoordinates.contains(Pair(r, c))) {
+                        str.append(" M")
+                    } else {
+                        str.append(" .")
+                    }
+                }
+            }
+            println(str.toString())
+        }
+    }
+
+
 }
