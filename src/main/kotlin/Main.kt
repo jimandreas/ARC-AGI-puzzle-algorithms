@@ -6,35 +6,57 @@
 
 package com.jimandreas
 
+import com.jimandreas.entities.AnalyzeTasks
 import com.jimandreas.entities.EntityUtilities
 import kotlinx.serialization.json.Json
 import java.io.File
 
+val pp = PrintUtilities()
+val entUtil = EntityUtilities()
+
 
 fun main() {
-//    var filePath = "C:/a/ARC-AGI/data/training/00d62c1b.json"
-    val filePath = "C:/a/ARC-AGI/data/training/d5d6de2d.json"
-//    val filePath = "C:/a/ARC-AGI/data/evaluation/00dbd492.json"
-    val file = File(filePath)
-    val exists =  file.exists()
+    println("touching ${trainingNames.size} training tasks and ${evaluationNames.size} evaluation tasks")
+    val t = System.currentTimeMillis()
+
+    for (t in trainingNames) {
+        val filePath = "$pathPrefix$trainingPrefix$t.json"
+        openIt(filePath)
+    }
+
+    for (t in evaluationNames) {
+        val filePath = "$pathPrefix$evaluationPrefix$t.json"
+        openIt(filePath)
+    }
+
+    val endTime = System.currentTimeMillis()
+    val elapsed = endTime - t
+    println("elapsed time = $elapsed in milliseconds")
+}
+
+private fun openIt(name: String) {
+
+    val file = File(name)
+    val exists = file.exists()
     val isAFile = file.isFile
     val canRead = file.canRead()
 
-    val foo = exists && isAFile && canRead
+    println(name)
 
-    val myData = Json.decodeFromString<TaskCoordinateData>(file.readText())
+    if (!(exists && isAFile && canRead)) {
+        throw Exception("file not found.")
+    }
 
-    val pp = PrintUtilities()
+    lateinit var taskData : TaskCoordinateData
 
-    pp.prettyPrintProblem(myData)
+    try {
+        taskData = Json.decodeFromString<TaskCoordinateData>(file.readText())
+    } catch (e: Exception) {
+        println("ERROR on json decode on file: $name")
+    }
 
-
-    val entUtil = EntityUtilities()
-
-    val d = myData.train[2].input
-    val entities = entUtil.findAllIsolatedThings(d)
-
-    println("\n")
-    pp.prettyPrintOneMatrixWithEntityDesignation(d, entities)
-    println("Done\n")
+    val analyze = AnalyzeTasks()
+    analyze.analyzeTrainingData(taskData)
+    taskTrainDataList.clear()
+    // Todo: do something
 }

@@ -6,11 +6,15 @@
 package com.jimandreas
 
 class PrintUtilities {
+    var debug = false
 
     /**
      * pretty print all problem matrices
      */
     fun prettyPrintProblem(td: TaskCoordinateData) {
+        if (!debug) {
+            return
+        }
         val iter = td.train.iterator().withIndex()
 
         for (t in td.train) {
@@ -39,6 +43,9 @@ class PrintUtilities {
      */
     fun prettyPrintOneMatrixWithEntityDesignation(matrix: List<List<Int>>, entity: List<Set<Pair<Int, Int>>>) {
 
+        if (!debug) {
+            return
+        }
         val rowInputIter = matrix.iterator().withIndex()
 
         while (rowInputIter.hasNext()) {
@@ -85,6 +92,9 @@ class PrintUtilities {
      * print block info with "B" for block entries coords, and an "M" for missing entries in the block
      */
     fun prettyPrintBlockInfo(b: BlockInfo) {
+        if (!debug) {
+            return
+        }
         val maxRow = b.coords.maxOf { it.first }
         val maxCol = b.coords.maxOf { it.second }
 

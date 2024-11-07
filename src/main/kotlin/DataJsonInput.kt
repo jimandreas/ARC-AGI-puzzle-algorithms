@@ -9,13 +9,13 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class TaskCoordinateData(
-    val train: List<MatrixDataAsListOfLists>,
-    val test: List<MatrixDataAsListOfLists>,   // note that there sometimes MORE THAN ONE entry in this list!!
+    val train: List<MatrixDataInputAndOutput>,
+    val test: List<MatrixDataInputAndOutput>,   // note that there sometimes MORE THAN ONE entry in this list!!
     val name: String = ""
 )
 
 @Serializable
-data class MatrixDataAsListOfLists(
+data class MatrixDataInputAndOutput(
     val input: List<List<Int>>,
     val output: List<List<Int>>
 )
