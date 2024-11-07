@@ -39,7 +39,11 @@ internal class AnalyzeTest {
 
         // 60b61512 NOTE that this one exposed that the diagonal cell was not found!
 
-        val t = "60b61512" // https://arc-visualizations.github.io/60b61512.html
+        //val t = "60b61512" // https://arc-visualizations.github.io/60b61512.html
+
+        // 6d75e8bb is similar to the above - a filled rectangle
+
+        val t = "6d75e8bb" // https://arc-visualizations.github.io/60b61512.html
 
         val filePath = "$pathPrefix$trainingPrefix$t.json"
         openIt(t, filePath)
