@@ -81,6 +81,12 @@ class AnalyzeTasks {
             taskTestDataList.add(dio)
         }
 
+        // now characterize each test input (the output must be generated and compare to the ANSWER matrix!
+
+        for (trainExample in taskTestDataList) {
+            analyzeTrainingInputOrOutput(trainExample.input)
+        }
+
     }
 
     /*

@@ -1,3 +1,8 @@
+@file:Suppress(
+    "UNUSED_VARIABLE", "MemberVisibilityCanBePrivate", "unused",
+    "ReplaceManualRangeWithIndicesCalls", "ReplaceSizeZeroCheckWithIsEmpty",
+    "SameParameterValue", "UnnecessaryVariable"
+)
 package com.jimandreas.solutionSurvey
 
 import com.jimandreas.taskTrainDataList
@@ -10,8 +15,21 @@ class SimpleSolutionSurvey {
      *    match the differences noted between the input and output
      *    then the solution is likely to fill in the rectangle.
      */
+
+    /*
+    Looking for the following two tasks:
+    60b61512.json
+    6d75e8bb.json
+
+    thse are cool but are FILL problems not block completion problem:
+    868de0fa.json
+    c0f76784.json
+    e8593010.json
+
+     */
     fun scanForBlockCompletionSolution() {
 
+        var colorOfMissingPoint = 0
 
         for (trainExample in taskTrainDataList) {
 
@@ -29,7 +47,13 @@ class SimpleSolutionSurvey {
             }
 
             if (compareSetsOfPairs(missingPoints, trainExample.pointDifferenceSet)) {
-                println("We have a hit!!")
+
+
+                // remember output color from training set
+                val coodPair = missingPoints.random()
+                val row = coodPair.first
+                val col = coodPair.second
+                colorOfMissingPoint = trainExample.output.matrix[row][col]
             } else {
                 return
             }
@@ -40,6 +64,10 @@ class SimpleSolutionSurvey {
         difference between input and output in the examples.
         Try the "missing points" solution!
          */
+
+        println("60b61512.json 6d75e8bb.json match on block extensions, remember color $colorOfMissingPoint")
+
+
     }
 
     /**

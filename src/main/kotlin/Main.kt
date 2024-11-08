@@ -63,4 +63,5 @@ private fun openIt(name: String) {
     simpleSol.scanForBlockCompletionSolution()
 
     taskTrainDataList.clear()
+    taskTestDataList.clear()
 }
