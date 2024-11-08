@@ -12,10 +12,11 @@ class SimpleSolutionSurvey {
      */
     fun scanForBlockCompletionSolution() {
 
+
         for (trainExample in taskTrainDataList) {
 
             if (!trainExample.equalSizedMatrices) {
-                continue
+                return
             }
             val inputInstance = trainExample.input
             //val outputInstance = trainExample.output
@@ -28,10 +29,17 @@ class SimpleSolutionSurvey {
             }
 
             if (compareSetsOfPairs(missingPoints, trainExample.pointDifferenceSet)) {
-                println("Winner winner chicken dinner")
+                println("We have a hit!!")
+            } else {
+                return
             }
-
         }
+
+        /*
+        OK all missing points (to fill out rectangles) match the
+        difference between input and output in the examples.
+        Try the "missing points" solution!
+         */
     }
 
     /**

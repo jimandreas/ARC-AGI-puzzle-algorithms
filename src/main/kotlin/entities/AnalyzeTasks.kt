@@ -56,6 +56,31 @@ class AnalyzeTasks {
 
         }
 
+        // save the test and the filename
+
+        // first assemble the matrice data
+        // and output data into the taskTrainDataList
+        // NOTE that the "output" here is the answer key!!
+
+        for (i in 0 until td.test.size) {
+
+            val testMatrixData = td.test[i]
+            val dataForOneExampleInput = DataForOneTrainExample()
+            dataForOneExampleInput.matrix = testMatrixData.input
+
+            val dataForOneExampleOutput = DataForOneTrainExample()
+            dataForOneExampleOutput.matrix = testMatrixData.output
+
+
+            val dio = NameAndTest(
+                dataForOneExampleInput,
+                dataForOneExampleOutput,
+                td.name
+            )
+
+            taskTestDataList.add(dio)
+        }
+
     }
 
     /*

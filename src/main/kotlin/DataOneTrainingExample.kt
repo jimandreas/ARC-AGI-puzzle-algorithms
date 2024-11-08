@@ -39,4 +39,14 @@ data class DataInputOutput(
     var pointDifferenceSet : Set<Pair<Int, Int>> = emptySet()
 )
 
+// set up the test info structures - include the taskName in case we get lucky!
+//   note that "output" here is the solution key to the task!!  (no peeking except to verify!)
+data class NameAndTest(
+    val input: DataForOneTrainExample,
+    val output: DataForOneTrainExample,
+    val taskName: String
+)
+
 val taskTrainDataList : MutableList<DataInputOutput> = mutableListOf()
+
+val taskTestDataList : MutableList<NameAndTest> = mutableListOf()
