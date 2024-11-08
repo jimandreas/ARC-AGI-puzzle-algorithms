@@ -34,6 +34,7 @@ data class DataInputOutput(
     val input: DataForOneTrainExample,
     val output: DataForOneTrainExample,
 
+    var equalSizedMatrices: Boolean = false,
     // holds the coords where input does not equal output
     var pointDifferenceSet : Set<Pair<Int, Int>> = emptySet()
 )

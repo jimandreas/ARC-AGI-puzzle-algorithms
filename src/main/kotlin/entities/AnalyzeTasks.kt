@@ -3,6 +3,7 @@
     "ReplaceManualRangeWithIndicesCalls", "ReplaceSizeZeroCheckWithIsEmpty",
     "SameParameterValue", "UnnecessaryVariable"
 )
+
 package com.jimandreas.entities
 
 import com.jimandreas.*
@@ -27,9 +28,20 @@ class AnalyzeTasks {
             val dataForOneExampleOutput = DataForOneTrainExample()
             dataForOneExampleOutput.matrix = mdata.output
 
+
             val dio = DataInputOutput(
                 dataForOneExampleInput, dataForOneExampleOutput
             )
+
+            val inputRowSize = dataForOneExampleInput.matrix.size
+            val inputColSize = dataForOneExampleInput.matrix[0].size
+            val outputRowSize = dataForOneExampleOutput.matrix.size
+            val outputColSize = dataForOneExampleOutput.matrix[0].size
+            if ((inputRowSize == outputRowSize)
+                && inputColSize == outputColSize
+            ) {
+                dio.equalSizedMatrices = true
+            }
             taskTrainDataList.add(dio)
         }
 
@@ -39,7 +51,8 @@ class AnalyzeTasks {
             analyzeTrainingInputOrOutput(trainExample.input)
             analyzeTrainingInputOrOutput(trainExample.output)
             trainExample.pointDifferenceSet = entityUtilities.findMatrixDifferences(
-                trainExample.input.matrix, trainExample.output.matrix)
+                trainExample.input.matrix, trainExample.output.matrix
+            )
 
         }
 
@@ -72,10 +85,12 @@ class AnalyzeTasks {
 
             //println(completionSet)
 
-            val bi = BlockInfo(coords = setOfPairs,
+            val bi = BlockInfo(
+                coords = setOfPairs,
                 rectangularBlockFlag = validFlag,
                 hollowFlag = isHollow,
-                missingCoordinates = completionSet)
+                missingCoordinates = completionSet
+            )
             oneTrainInstance.blockInfoList.add(bi)
 
             pp.prettyPrintBlockInfo(bi)

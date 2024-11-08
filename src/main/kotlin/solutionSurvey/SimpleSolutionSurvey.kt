@@ -14,10 +14,14 @@ class SimpleSolutionSurvey {
 
         for (trainExample in taskTrainDataList) {
 
+            if (!trainExample.equalSizedMatrices) {
+                continue
+            }
             val inputInstance = trainExample.input
-            val outputInstance = trainExample.output
+            //val outputInstance = trainExample.output
 
-            val missingPoints : MutableSet<Pair<Int, Int>> = mutableSetOf()
+            val missingPoints: MutableSet<Pair<Int, Int>> = mutableSetOf()
+
 
             for (bi in inputInstance.blockInfoList) {
                 missingPoints.addAll(bi.missingCoordinates)
@@ -57,7 +61,8 @@ indicating that the lists are equal.
      */
     fun compareListsOfSets(
         list1: List<Set<Pair<Int, Int>>>,
-        list2: List<Set<Pair<Int, Int>>>): Boolean {
+        list2: List<Set<Pair<Int, Int>>>
+    ): Boolean {
         // If both lists are empty, they are considered equal
         if (list1.isEmpty() && list2.isEmpty()) return true
 
