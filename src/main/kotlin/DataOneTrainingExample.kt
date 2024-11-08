@@ -26,12 +26,16 @@ class DataForOneTrainExample {
     var matrix: List<List<Int>> = emptyList()
     var blocks: List<Set<Pair<Int, Int>>> = emptyList()
     var blockInfoList : MutableList<BlockInfo> = mutableListOf()
+
 }
 
 // the pair for one example - input and output
 data class DataInputOutput(
     val input: DataForOneTrainExample,
-    val output: DataForOneTrainExample
+    val output: DataForOneTrainExample,
+
+    // holds the coords where input does not equal output
+    var pointDifferenceSet : Set<Pair<Int, Int>> = emptySet()
 )
 
 val taskTrainDataList : MutableList<DataInputOutput> = mutableListOf()

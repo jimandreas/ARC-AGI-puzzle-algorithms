@@ -11,6 +11,7 @@ class AnalyzeTasks {
     val pp = PrintUtilities()
     val blockUtil = BlockUtilities()
     val blockCompletion = BlockCompletion()
+    val entityUtilities = EntityUtilities()
 
     // results are accumulated in taskTrainingDataList
 
@@ -37,7 +38,11 @@ class AnalyzeTasks {
         for (trainExample in taskTrainDataList) {
             analyzeTrainingInputOrOutput(trainExample.input)
             analyzeTrainingInputOrOutput(trainExample.output)
+            trainExample.pointDifferenceSet = entityUtilities.findMatrixDifferences(
+                trainExample.input.matrix, trainExample.output.matrix)
+
         }
+
     }
 
     /*

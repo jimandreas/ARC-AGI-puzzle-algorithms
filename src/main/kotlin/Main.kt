@@ -8,6 +8,7 @@ package com.jimandreas
 
 import com.jimandreas.entities.AnalyzeTasks
 import com.jimandreas.entities.EntityUtilities
+import com.jimandreas.solutionSurvey.SimpleSolutionSurvey
 import kotlinx.serialization.json.Json
 import java.io.File
 
@@ -57,6 +58,9 @@ private fun openIt(name: String) {
 
     val analyze = AnalyzeTasks()
     analyze.analyzeTrainingData(taskData)
+
+    val simpleSol = SimpleSolutionSurvey()
+    simpleSol.scanForBlockCompletionSolution()
+
     taskTrainDataList.clear()
-    // Todo: do something
 }

@@ -15,11 +15,10 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import java.io.File
 
-internal class AnalyzeTasksAllTasks {
+internal class AnalyzeTasksAllTasksTest {
 
     val pp = PrintUtilities()
     val entUtil = EntityUtilities()
-    val analyze = AnalyzeTasks()
 
     @BeforeEach
     fun setUp() {
@@ -62,8 +61,9 @@ internal class AnalyzeTasksAllTasks {
             println("ERROR on json decode on file: $name")
         }
 
+        val analyze = AnalyzeTasks()
         analyze.analyzeTrainingData(taskData)
-
+        taskTrainDataList.clear()
         // Todo: do something
     }
 }

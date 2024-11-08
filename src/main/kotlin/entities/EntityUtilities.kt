@@ -192,4 +192,40 @@ class EntityUtilities {
 
      */
 
+    /**
+     * Please assume kotlin. There are two matrices.
+     * Each matrix is given in the form of integers in List<List<Int>>.
+     * Therefore it is a two dimensional matrix. Assume an int with
+     * value of zero is a background.  Please compare the two
+     * matrices and accumulate a set of coordinate pairs where
+     * the two matrices are different.   Return the set of coordinates.
+     *
+     * Added: returns empty list of the matrices are not the same size
+     *
+     * [Google Gemini emitted code follows]
+     */
+    fun findMatrixDifferences(matrix1: List<List<Int>>, matrix2: List<List<Int>>): Set<Pair<Int, Int>> {
+        val differentCoordinates = mutableSetOf<Pair<Int, Int>>()
+
+        // Assuming both matrices have the same dimensions
+        val numRows = matrix1.size
+        val numCols = matrix1[0].size
+
+        val numRows2 = matrix2.size
+        val numCols2 = matrix2[0].size
+
+        // return emptySet if the matrices are not the same size
+        if ((numRows != numRows2 || numCols != numCols2)) return emptySet()
+
+        for (row in 0 until numRows) {
+            for (col in 0 until numCols) {
+                if (matrix1[row][col] != matrix2[row][col]) {
+                    differentCoordinates.add(Pair(row, col))
+                }
+            }
+        }
+
+        return differentCoordinates
+    }
+
 }
