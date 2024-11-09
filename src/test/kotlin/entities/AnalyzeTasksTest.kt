@@ -11,6 +11,7 @@ import com.jimandreas.entities.AnalyzeTasks
 import com.jimandreas.entities.BlockCompletion
 import com.jimandreas.entities.BlockUtilities
 import kotlinx.serialization.json.Json
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -28,6 +29,15 @@ internal class AnalyzeTasksTest {
     fun setUp() {
         // do something
     }
+
+    @AfterEach
+    fun cleanHeap() {
+        // release the task global data structure to prevent memory leak
+        //   and reset the analysis
+        taskTrainDataList.clear()
+        taskTestDataList.clear()
+    }
+
 
     // NOTES: good but the tasks are more oriented to "hollowness" than "blockiness"
 

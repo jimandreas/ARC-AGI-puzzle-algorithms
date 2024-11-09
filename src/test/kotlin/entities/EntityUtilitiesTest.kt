@@ -9,6 +9,7 @@ package entities
 import com.jimandreas.*
 import com.jimandreas.entities.EntityUtilities
 import kotlinx.serialization.json.Json
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -22,6 +23,14 @@ internal class EntityUtilitiesTest {
     @BeforeEach
     fun setUp() {
         // do something
+    }
+
+    @AfterEach
+    fun cleanHeap() {
+        // release the task global data structure to prevent memory leak
+        //   and reset the analysis
+        taskTrainDataList.clear()
+        taskTestDataList.clear()
     }
 
     @Test

@@ -63,7 +63,8 @@ internal class AnalyzeTasksAllTasksTest {
 
         val analyze = AnalyzeTasks()
         analyze.analyzeTrainingData(taskData)
+
         taskTrainDataList.clear()
-        // Todo: do something
+        taskTestDataList.clear()
     }
 }
